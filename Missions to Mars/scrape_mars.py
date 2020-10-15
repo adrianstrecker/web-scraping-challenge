@@ -19,27 +19,27 @@ def init_browser():
     return Browser("chrome", **executable_path, headless=False)
 
 def scrape():
-    mars = []
     browser = init_browser()
     url = "https://mars.nasa.gov/news/"
     browser.visit(url)
     time.sleep(2)
+    mars_info = []
     news_title = []
     news_p = []
     html = browser.html
     soup = BeautifulSoup(html, "html.parser")
-    results = soup.find_all("li", class_="slide")
+    results = soup.find("li", class_="slide")
 
-    for r in results[0]:
+    for r in results:
         try: 
-            title = {}
-            para = {}
-            title["news_title"] = r.find("div", class_="content_title").get_text()
-            para["news_p"] = r.find("div", class_="article_teaser_body").get_text()
-            news_title.append(title)
-            news_p.append(para)
+            mars = {}
+            mars["news_title"] = r.find("div", class_="content_title").get_text()
+            mars["news_p"] = r.find("div", class_="article_teaser_body").get_text()
+            mars_info.append(mars)
+
         except:
             pass
+    # return mars_info
     #     print(news_title)
     #     print('')
     #     print(news_p)
@@ -58,7 +58,7 @@ def scrape():
 
     # https://splinter.readthedocs.io/en/latest/browser.html#verifying-page-url-with-browser-url
     featured_image_url["featured_image_url"] = browser.url
-    mars.append(featured_image_url)
+    mars_info.append(featured_image_url)
     
 
     # -----------------------
@@ -107,13 +107,13 @@ def scrape():
             browser.links.find_by_partial_text('Sample').click()
             result["img_url"] = browser.url+".tif/full.jpg"
                 
-            hemisphere_image_urls.append(result)
+            mars_info.append(result)
         except:
             pass
 
     browser.quit()
-    return news_title
-    return mars
+    return mars_info
+
 #     print(hemisphere_image_urls)
 
 

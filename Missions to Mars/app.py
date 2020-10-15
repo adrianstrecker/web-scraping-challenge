@@ -10,9 +10,16 @@ app.config["MONGO_URI"] = "mongodb://localhost:27017/mars_db"
 mongo = PyMongo(app)
 
 @app.route("/")
-def index():
-    news_title = mongo.db.news_title.find_one()
+def n_title():
+    news_title = mongo.db.news_title.find()
+    # news_p = mongo.db.news_p.find_one()
     return render_template("index.html", news_title=news_title)
+
+@app.route("/")
+def n_para():
+    news_p = mongo.db.news_p.find()
+    # news_p = mongo.db.news_p.find_one()
+    return render_template("index.html", news_p=news_p)
 
 
 @app.route("/scrape")
@@ -23,7 +30,16 @@ def scraper():
     # mongo.db.collection.update({}, news_t_data, upsert=True)
 
     news_title.insert_many(news_t_data)
+    return redirect("/", code=302)
+    
+@app.route("/scrape")
+def news_p_run():
+    news_p = mongo.db.news_p
+    news_p.drop()
+    news_p_data = scrape_mars.scrape()
+    # mongo.db.collection.update({}, news_p_data, upsert=True)
 
+    news_p.insert_many(news_p_data)
     return redirect("/", code=302)
 
 
