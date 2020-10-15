@@ -18,15 +18,15 @@
         </div>
 
         <!-- Mars Data -->
-        <!-- {% for i in mars %} -->
+        {% for m in mars_info %}
         <div class="row" id="craiglist-listings">
             <div class="col-md-12">
-                <h4 class="heading">{{ news_title.news_title }}</h4>
-                <small>{{ news_p }}</small>
-                <img src="{{ featured_image_url }}" />
+                <h4 class="heading">{{ m.news_title }}</h4>
+                <small>{{ m.news_p }}</small>
+                <img src="{{ m.featured_image_url }}" width="500"/>
             </div>
         </div>
-        <!-- {% endfor %} -->
+        {% endfor %}
     </div>
 </body>
 
