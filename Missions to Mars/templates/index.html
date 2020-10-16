@@ -27,10 +27,31 @@
                 {{ m.news_p }}<br>
                 <!-- <h1>Featured Mars Image</h1> -->
                 </div>
-                <div class="row mx-md-n5">
-                    <div class="col px-md-5"><div class="p-3 border bg-light"><img src="{{ m.featured_image_url }}" width="500"></div></div>
-                    <div class="col px-md-5"><div class="p-3 border bg-light">{{ m.facts_table | safe }}</div></div>
-                  </div>
+                <div class="custom-row2 mx-md-5 pt-5">
+                    <div class="col px-md-5">
+                      <div class="container-fluid bg-white rounded">
+                        <div class="p-4 bg-white">
+                        
+                        <hr><div class="text-wrap mt-2 summary-text">
+                        <img src="{{ m.featured_image_url }}" width="500"></div>
+                        </div>
+                      </div>
+                    </div>
+                
+                  <!--------------------------------->
+                  <!---------RIGHT CONTAINER--------->
+                  <!--------------------------------->
+                  
+                  <div class="custom-row mx-md-n5">
+                    <div class="col-8">
+                      <div class="container">
+                        <div class="px-5 py-4 bg-white rounded">
+                            {{ m.facts_table | safe }}
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                
 
 
                 <div class="col-md-12">
