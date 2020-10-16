@@ -28,7 +28,7 @@ def scrape():
     time.sleep(2)
 
 
-    
+    # Assistance from Benjamin Alford
     mars_info = {}
 
     html = browser.html
