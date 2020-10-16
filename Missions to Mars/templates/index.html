@@ -18,15 +18,37 @@
         </div>
 
         <!-- Mars Data -->
-        {% for m in mars_info %}
-        <div class="row" id="craiglist-listings">
-            <div class="col-md-12">
-                <h4 class="heading">{{ m.news_title }}</h4>
-                <small>{{ m.news_p }}</small>
-                <img src="{{ m.featured_image_url }}" width="500"/>
+        
+        <div class="row" id="mars-data" style="margin-top: -4rem;">
+            <div class="col-md-8">
+                <h2>Latest Mars News</h2>
+                {% for m in mars_info %}
+                <h4 class="heading" style="font-weight: bold;">{{ m.news_title }}</h4>
+                {{ m.news_p }}<br>
+                <!-- <h1>Featured Mars Image</h1> -->
+                </div>
+                <div class="row mx-md-n5">
+                    <div class="col px-md-5"><div class="p-3 border bg-light"><img src="{{ m.featured_image_url }}" width="500"></div></div>
+                    <div class="col px-md-5"><div class="p-3 border bg-light">{{ m.facts_table | safe }}</div></div>
+                  </div>
+
+
+                <div class="col-md-12">
+                <div class="row row-cols-1 row-cols-md-2">
+                    <div class="col mb-4">
+                      <div class="card">
+                        <img src="{{ m.img_url }}" class="card-img-top" alt="{{ m.title }}">
+                        <div class="card-body">
+                          <h5 class="card-title">{{ m.title}}</h5>
+                        </div>
+                      </div>
+                    </div>
+                    
+                  </div>
+                {% endfor %}
             </div>
         </div>
-        {% endfor %}
+        
     </div>
 </body>
 

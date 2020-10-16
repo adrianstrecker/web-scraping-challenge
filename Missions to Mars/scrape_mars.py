@@ -64,12 +64,13 @@ def scrape():
     # -----------------------
     # Retrieve facts table --
     # -----------------------
-
+    table={}
     facts_url ='https://space-facts.com/mars/'
     mars_facts = pd.read_html(facts_url)
 
     facts_table = mars_facts[0]
-    facts_table.to_html('mars_facts.html')
+    table["facts_table"] = facts_table.to_html(header=False, index=False)
+    mars_info.append(table)
 
     # ------------------------------------------------
     # Create dictionary for hemispheres and image urls
@@ -102,12 +103,13 @@ def scrape():
             soup = BeautifulSoup(html, "html.parser")
             browser.links.find_by_partial_text(h).click()
             
-            result = {}
-            result["title"] = h
+            mars = {}
+            mars["title"] = h
             browser.links.find_by_partial_text('Sample').click()
-            result["img_url"] = browser.url+".tif/full.jpg"
+            mars["img_url"] = browser.url+".tif/full.jpg"
+            # mars["img_url"] = browser.url+".tif/full.jpg"
                 
-            mars_info.append(result)
+            mars_info.append(mars)
         except:
             pass
 
