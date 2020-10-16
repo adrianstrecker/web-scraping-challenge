@@ -68,7 +68,7 @@ def scrape():
     mars_facts = pd.read_html(facts_url)
 
     facts_table = mars_facts[0]
-    mars_info["facts_table"] = facts_table.to_html(header=False, index=False)
+    mars_info["facts_table"] = facts_table.to_html(header=False, index=False, classes="table-striped")
     
 
     
@@ -99,11 +99,12 @@ def scrape():
         html = browser.html
         soup = BeautifulSoup(html, "html.parser")
         browser.links.find_by_partial_text(h).click()
-        
+            
         result = {}
         result["title"] = h
-        browser.links.find_by_partial_text('Sample').click()
-        result["img_url"] = browser.url+".tif/full.jpg"
+        html = browser.html
+        soup = BeautifulSoup(html, "html.parser")
+        result["img_url"] = soup.find("div", class_="downloads").find("a")["href"]
         hemisphere_image_urls.append(result)
         
     mars_info["hemispheres"] = hemisphere_image_urls

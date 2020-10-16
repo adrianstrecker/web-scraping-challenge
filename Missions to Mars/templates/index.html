@@ -31,21 +31,19 @@
             
             <div class="col px-md-5"><div class="p-3 bg-white"><h3>Mars Facts</h3> {{ m.facts_table | safe }}</div></div>
           </div>
-        {% endfor %}
-
-                <!-- {% for m in mars_info %}
+                
                 <div class="row row-cols-1 row-cols-md-2">
                     <div class="col mb-4">
                       <div class="card">
-                        <img src="{{ m.img_url }}" class="card-img-top" alt="{{ m.title }}">
+                        <img src="{{ m.hemispheres[img_url] }}" class="card-img-top" alt="{{ m.title }}">
                         <div class="card-body">
                           <h5 class="card-title">{{ m.title}}</h5>
                         </div>
                       </div>
                     </div>
-                    
-                  </div>
-                {% endfor %} -->
+        {% endfor %}        
+    </div>
+                
 </body>
 
 </html>
