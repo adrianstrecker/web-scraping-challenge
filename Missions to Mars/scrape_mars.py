@@ -27,8 +27,7 @@ def scrape():
     browser.visit(url)
     time.sleep(2)
 
-
-    # Assistance from Benjamin Alford
+    # Assistance from Benjamin Alford - change from [] to {}
     mars_info = {}
 
     html = browser.html
@@ -44,9 +43,6 @@ def scrape():
             break
 
 
-    
-
-
     # -----------------------
     # Retrieve featured image
     # -----------------------
@@ -59,7 +55,6 @@ def scrape():
     # https://splinter.readthedocs.io/en/latest/browser.html#verifying-page-url-with-browser-url
     mars_info["featured_image_url"] = browser.url
 
-
     # -----------------------
     # Retrieve facts table --
     # -----------------------
@@ -70,9 +65,6 @@ def scrape():
     facts_table = mars_facts[0]
     mars_info["facts_table"] = facts_table.to_html(header=False, index=False, classes="table-striped")
     
-
-    
-
     # ------------------------------------------------
     # Create dictionary for hemispheres and image urls
     # ------------------------------------------------
