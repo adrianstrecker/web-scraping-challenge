@@ -106,8 +106,12 @@ def scrape():
         soup = BeautifulSoup(html, "html.parser")
         result["img_url"] = soup.find("div", class_="downloads").find("a")["href"]
         hemisphere_image_urls.append(result)
-        
-    mars_info["hemispheres"] = hemisphere_image_urls
+    mars_info["cerberus"] = hemisphere_image_urls[0]
+    mars_info["schia"] = hemisphere_image_urls[1]
+    mars_info["syr"] = hemisphere_image_urls[2]
+    mars_info["valles"] = hemisphere_image_urls[3]
+
+    # mars_info["hemispheres"] = hemisphere_image_urls
 
     browser.quit()
 
