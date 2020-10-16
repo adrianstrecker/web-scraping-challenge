@@ -63,7 +63,7 @@ def scrape():
     mars_facts = pd.read_html(facts_url)
 
     facts_table = mars_facts[0]
-    mars_info["facts_table"] = facts_table.to_html(header=False, index=False, classes="table-striped")
+    mars_info["facts_table"] = facts_table.to_html(header=False, index=False, justify="left" ,classes="table-striped")
     
     # ------------------------------------------------
     # Create dictionary for hemispheres and image urls
