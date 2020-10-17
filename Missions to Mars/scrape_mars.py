@@ -27,7 +27,7 @@ def scrape():
     browser.visit(url)
     time.sleep(2)
 
-    # Assistance from Benjamin Alford - change from [] to {}
+    # Assistance from Benjamen Alford - change from [] to {}
     mars_info = {}
 
     html = browser.html

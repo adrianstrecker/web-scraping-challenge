@@ -23,7 +23,7 @@ def scraper():
     mars_info.drop()
     mars_data = scrape_mars.scrape()
     print(mars_info)
-    # Assistance from Benjamin Alford - use update instead of insert_many
+    # Assistance from Benjamen Alford - use update instead of insert_many
     mongo.db.mars_info.update({}, mars_data, upsert=True)
 
     # mars_info.insert_many(mars_data)
