@@ -1,7 +1,7 @@
 # web-scraping-challenge
 # Mission to Mars Web Scraping Challenge
 
-This assignment required scraping of various websites for data related to Mars and displays the information in a single web page.
+This assignment required scraping of various websites for data related to Mars and displays the information in a single web page that uses Bootstrap.
 
 Below are screenshots of the scraping results (subject to change as news and featured images...etc. change)
 
