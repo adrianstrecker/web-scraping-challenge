@@ -25,7 +25,7 @@ def scrape():
     # ---------------------------
     url = "https://mars.nasa.gov/news/"
     browser.visit(url)
-    time.sleep(2)
+    time.sleep(1)
 
     # Assistance from Benjamen Alford - change from [] to {}
     mars_info = {}
@@ -48,8 +48,11 @@ def scrape():
     # -----------------------
     img_site = "https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars"
     browser.visit(img_site)
+    time.sleep(1)
     browser.links.find_by_partial_text('FULL').click()
+    time.sleep(1)
     browser.links.find_by_partial_href('/spaceimages/details').click()
+    time.sleep(1)
     browser.links.find_by_partial_href('/spaceimages/images/largesize/').click()
 
     # https://splinter.readthedocs.io/en/latest/browser.html#verifying-page-url-with-browser-url
@@ -58,12 +61,11 @@ def scrape():
     # -----------------------
     # Retrieve facts table --
     # -----------------------
-    table={}
     facts_url ='https://space-facts.com/mars/'
     mars_facts = pd.read_html(facts_url)
 
     facts_table = mars_facts[0]
-    mars_info["facts_table"] = facts_table.to_html(header=False, index=False, justify="left" ,classes="table-striped")
+    mars_info["facts_table"] = facts_table.to_html(header=False, index=False, justify="left", classes="table-striped")
     
     # ------------------------------------------------
     # Create dictionary for hemispheres and image urls
